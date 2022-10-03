@@ -59,7 +59,10 @@ namespace datoveSouboryRozhrani00
                 {
                     cislo *= 2;
                 }
-                bw.BaseStream.Position -= sizeof(Int32);
+                //bw.BaseStream.Position -= 4;
+                //bw.BaseStream.Position -= sizeof(Int32);
+                //bw.Seek(-4, SeekOrigin.Current);
+                bw.Seek(-sizeof(Int32), SeekOrigin.Current);
 
                 bw.Write(cislo);
             }
