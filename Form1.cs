@@ -30,5 +30,17 @@ namespace datoveSouboryRozhrani00
             bw.Close();
             fs.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            FileStream fs = new FileStream("celaCisla.dat",FileMode.Open,FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            while(fs.Position<fs.Length)
+            {
+                int cislo = br.ReadInt32();
+                listBox1.Items.Add(cislo);
+            }
+        }
     }
 }
