@@ -54,6 +54,8 @@ namespace datoveSouboryRozhrani00
             BinaryWriter bw = new BinaryWriter(fs);
             while(br.BaseStream.Position <br.BaseStream.Length)
             {
+                int pos = (int)br.BaseStream.Position;
+
                 int cislo = br.ReadInt32();
                 if(cislo %2!=0)
                 {
@@ -62,8 +64,8 @@ namespace datoveSouboryRozhrani00
                 //bw.BaseStream.Position -= 4;
                 //bw.BaseStream.Position -= sizeof(Int32);
                 //bw.Seek(-4, SeekOrigin.Current);
-                bw.Seek(-sizeof(Int32), SeekOrigin.Current);
-
+                //bw.Seek(-sizeof(Int32), SeekOrigin.Current);
+                bw.Seek(pos,SeekOrigin.Begin);
                 bw.Write(cislo);
             }
             br.Close();
