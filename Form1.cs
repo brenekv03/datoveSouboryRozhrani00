@@ -68,8 +68,8 @@ namespace datoveSouboryRozhrani00
                 bw.Seek(pos,SeekOrigin.Begin);
                 bw.Write(cislo);
             }
-            br.Close();
-            bw.Close();
+            //br.Close();
+            //bw.Close();
             fs.Close();
         }
     }
