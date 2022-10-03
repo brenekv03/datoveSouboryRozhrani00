@@ -38,9 +38,34 @@ namespace datoveSouboryRozhrani00
             BinaryReader br = new BinaryReader(fs);
             while(fs.Position<fs.Length)
             {
+                //double cislo = br.ReadDouble();
                 int cislo = br.ReadInt32();
                 listBox1.Items.Add(cislo);
             }
+            br.Close();
+            fs.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //všechna lichá čísla oprav vynásobením 2 na sudá
+            FileStream fs = new FileStream("celaCisla.dat",FileMode.Open,FileAccess.ReadWrite);
+            BinaryReader br = new BinaryReader(fs);
+            BinaryWriter bw = new BinaryWriter(fs);
+            while(br.BaseStream.Position <br.BaseStream.Length)
+            {
+                int cislo = br.ReadInt32();
+                if(cislo %2!=0)
+                {
+                    cislo *= 2;
+                }
+                bw.BaseStream.Position -= 4;
+
+                bw.Write(cislo);
+            }
+            br.Close();
+            bw.Close();
+            fs.Close();
         }
     }
 }
