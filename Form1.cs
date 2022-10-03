@@ -72,5 +72,10 @@ namespace datoveSouboryRozhrani00
             //bw.Close();
             fs.Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //Všechna záporná čísla vynásob -1
+        }
     }
 }
