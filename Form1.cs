@@ -81,11 +81,16 @@ namespace datoveSouboryRozhrani00
             BinaryWriter bw = new BinaryWriter(fs);
             while(br.BaseStream.Position<br.BaseStream.Length)
             {
+                int pos = (int)br.BaseStream.Position;
                 double cislo = br.ReadDouble();
                 if (cislo < 0)
                 {
                     cislo *= -1;
-                    bw.BaseStream.Position -= 8;
+                    //bw.BaseStream.Position -= 8;
+                    //bw.BaseStream.Position -= sizeof(Double);
+                    //bw.Seek(-8, SeekOrigin.Current);
+                    //bw.Seek(-sizeof(Double), SeekOrigin.Current);
+                    bw.Seek(pos, SeekOrigin.Begin);
                     bw.Write(cislo);
                 }
             }
