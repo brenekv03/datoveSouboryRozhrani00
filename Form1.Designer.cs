@@ -58,6 +58,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Vytvoř soubor n náhodných reálných čísel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -97,6 +98,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "Vypiš soubor reálných";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBox1
             // 

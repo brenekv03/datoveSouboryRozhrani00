@@ -76,6 +76,48 @@ namespace datoveSouboryRozhrani00
         private void button5_Click(object sender, EventArgs e)
         {
             //Všechna záporná čísla vynásob -1
+            FileStream fs = new FileStream("realnaCisla.dat", FileMode.Open, FileAccess.ReadWrite);
+            BinaryReader br = new BinaryReader(fs);
+            BinaryWriter bw = new BinaryWriter(fs);
+            while(br.BaseStream.Position<br.BaseStream.Length)
+            {
+                double cislo = br.ReadDouble();
+                if (cislo < 0)
+                {
+                    cislo *= -1;
+                    bw.BaseStream.Position -= 8;
+                    bw.Write(cislo);
+                }
+            }
+            fs.Close();
+
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FileStream fs = new FileStream("realnaCisla.dat",FileMode.Create,FileAccess.Write);
+            BinaryWriter bw = new BinaryWriter(fs);
+            Random rnd = new Random();
+            int n = int.Parse(textBox2.Text);
+            for(int i =0; i<n;i++)
+            {
+                bw.Write(rnd.NextDouble()*(1000-(-1000))-1000); 
+            }
+            bw.Close();
+            fs.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+            FileStream fs = new FileStream("realnaCisla.dat", FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            while(br.BaseStream.Position<br.BaseStream.Length)
+            {
+                double cislo = br.ReadDouble();
+                listBox2.Items.Add(cislo);
+            }
+            fs.Close();
+        }   
     }
 }
